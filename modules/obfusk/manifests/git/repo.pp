@@ -1,11 +1,16 @@
-define git::repo ($path = $title, $source, $pull = false) {
-  exec { "git clone $source $path":
+define git::repo (
+  $source,
+  $path   = $title,
+  $pull   = false,
+  $branch = master
+) {
+  exec { "git clone -b $branch $source $path":
     creates => $path,
   }
 
   if ($pull == true) {
     exec { "git pull ($path)":
-      command =>  "git pull",
+      command =>  "git pull origin $branch",
       cwd     => $path
     }
     Exec["git clone $source $path"] -> Exec["git pull ($path)"]
