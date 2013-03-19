@@ -1,4 +1,4 @@
-define git::repo (
+define obfusk::git::repo (
   $source,
   $path   = $title,
   $pull   = false,
