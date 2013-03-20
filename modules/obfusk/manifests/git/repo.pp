@@ -5,7 +5,7 @@ define obfusk::git::repo (
   $pull   = false,
 ) {
   if ($branch == undef) {
-    $branch_opt = ""
+    $branch_opt = ''
   } else {
     $branch_opt = "-b $branch"
   }
@@ -17,7 +17,7 @@ define obfusk::git::repo (
 
   if ($pull == true) {
     exec { "git pull => $path":
-      command => "git pull",
+      command => 'git pull',
       cwd     => $path,
     }
     Exec["git clone => $path"] -> Exec["git pull => $path"]
