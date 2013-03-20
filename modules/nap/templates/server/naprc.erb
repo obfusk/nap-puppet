@@ -7,7 +7,7 @@ NAP_APPS_DIR=<%= @nap_apps_dir %>
 
   NAPPS_FILE=<%= @napps_file %>
 
-    NAP_LIBS=<%= @nap_libs.join ' ' %>
+    NAP_LIBS=( <%= @nap_libs.join ' ' %> )
 
 
 # === Defaults ===

@@ -12,7 +12,7 @@ define obfusk::git::repo (
 
   exec { "git clone => $path":
     command => "git clone $branch_opt $source $path",
-    creates => $path,
+    creates => "$path/.git",
   }
 
   if ($pull == true) {
