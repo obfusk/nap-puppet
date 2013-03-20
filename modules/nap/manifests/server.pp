@@ -60,6 +60,12 @@ class nap::server (
 
   # === Files ===
 
+  exec { "mkdir -p $base_dir": }
+  file { $base_dir:
+    ensure => directory,
+  }
+  File[$base_dir] -> Exec["mkdir -p $base_dir"],
+
   file { $dirs:
     ensure => directory,
   }
