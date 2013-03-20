@@ -22,9 +22,13 @@
 
 # --
 
+# PUPPET {
+
 <% Dir["#{@napps_puppet}/*"].each do |file| %>
-# puppet: <%= file %>
+# <%= file %>
 <%= File.read file %>
 <% end %>
+
+# } PUPPET
 
 # --
