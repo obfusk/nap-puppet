@@ -54,6 +54,7 @@ class nap::server (
     gid       => $group,
     home      => $nap_apps_dir,
     password  => '*', # disabled                                # TODO
+    shell     => '/bin/bash',
     system    => true,
   }
 
