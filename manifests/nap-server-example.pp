@@ -1,3 +1,14 @@
+# --                                                            # {{{1
+#
+# File        : manifests/nap-server-example.pp
+# Maintainer  : Felix C. Stegerman <flx@obfusk.net>
+# Date        : 2013-03-20
+#
+# Copyright   : Copyright (C) 2013  Felix C. Stegerman
+# Licence     : GPLv2
+#
+# --                                                            # }}}1
+
 # === Defaults ==
 
 Exec {
@@ -29,3 +40,6 @@ Package['vim'] -> Exec['update-alternatives => editor']
 class { 'nap::server':
   # ...
 }
+
+
+# vim: set tw=70 sw=2 sts=2 et fdm=marker :

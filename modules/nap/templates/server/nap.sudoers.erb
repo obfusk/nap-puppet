@@ -1,0 +1,3 @@
+Cmnd_Alias NAPUPDATE = <%= @nap_dir %>/bin/nap-update
+Defaults!NAPUPDATE always_set_home
+<%= @git_user %> ALL = (<%= @user %>) NOPASSWD: NAPUPDATE
