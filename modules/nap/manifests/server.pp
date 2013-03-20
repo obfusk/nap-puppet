@@ -24,7 +24,7 @@ class nap::server (
   $dirs_nap             = [ $nap_apps_dir, $nap_log_dir ]
 
   $napps_file           = "$nap_cfg_dir/napps"
-  $napps_puppet         = "$napps_file-puppet.d"
+  $napps_puppet         = "$napps_file.puppet.d"
 
   if ($libs == undef) {
     $nap_libs             = [ "$nap_dir/lib" ]
