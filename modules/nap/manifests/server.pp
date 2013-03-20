@@ -27,27 +27,27 @@ class nap::server (
   $napps_puppet         = "$napps_file.puppet.d"
 
   if ($libs == undef) {
-    $nap_libs             = [ "$nap_dir/lib" ]
+    $nap_libs           = [ "$nap_dir/lib" ]
   } else {
-    $nap_libs             = $libs
+    $nap_libs           = $libs
   }
 
-  $nap_d_clj_cmd          = $default_clj_cmd
-  $nap_d_clj_depcmd       = $default_clj_depcmd
-  $nap_d_ruby_cmd         = $default_ruby_cmd
-  $nap_d_ruby_depcmd      = $default_ruby_depcmd
+  $nap_d_clj_cmd        = $default_clj_cmd
+  $nap_d_clj_depcmd     = $default_clj_depcmd
+  $nap_d_ruby_cmd       = $default_ruby_cmd
+  $nap_d_ruby_depcmd    = $default_ruby_depcmd
 
 
   # === Repo ===
 
   obfusk::git::repo { $nap_dir:
-    source  => $repo,
-    pull    => $pull,
+    source    => $repo,
+    pull      => $pull,
   }
   File[$nap_dir] -> Obfusk::Git::Repo[$nap_dir]
 
 
-  # === User ===
+  # === User + Group ===
 
   user { $user:
     ensure    => present,
@@ -57,37 +57,42 @@ class nap::server (
     system    => true,
   }
 
+  group { $group:
+    ensure    => present,
+    system    => true,
+  }
+
 
   # === Files ===
 
   exec { "mkdir -p $base_dir": }
   file { $base_dir:
-    ensure => directory,
+    ensure    => directory,
   }
   File[$base_dir] -> Exec["mkdir -p $base_dir"]
 
   file { $dirs:
-    ensure => directory,
+    ensure    => directory,
   }
 
   file { $dirs_nap:
-    ensure  => directory,
-    owner   => $user,
-    group   => $group,
+    ensure    => directory,
+    owner     => $user,
+    group     => $group,
   }
 
   file { "$nap_cfg_dir/naprc":
-    ensure  => file,
-    content => template('nap/server/naprc.erb'),
+    ensure    => file,
+    content   => template('nap/server/naprc.erb'),
   }
 
   file { $napps_puppet:
-    ensure => directory,
+    ensure    => directory,
   }
 
   file { $napps_file:
-    ensure  => file,
-    content => template('nap/server/napps.erb'),
+    ensure    => file,
+    content   => template('nap/server/napps.erb'),
   }
 
 
