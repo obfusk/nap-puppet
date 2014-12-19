@@ -18,7 +18,7 @@ class nap::server (
   $default_ruby_cmd     = undef,
   $default_ruby_depcmd  = undef,
 
-  $repo = 'https://github.com/noxqsgit/nap.git',                # TODO
+  $repo = 'https://github.com/obfusk/nap.git',                # TODO
   $pull                 = true,
 
   $user                 = 'nap',
